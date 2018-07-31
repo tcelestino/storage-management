@@ -3,21 +3,25 @@
 namespace storage\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Request;
 
 class ProductsController extends Controller {
 
     public function list() {
-        $html = '<h1>Products</h1>';
-        $html .= '<ul>';
-
         $products = DB::select('SELECT * FROM products');
 
-        foreach ($products as $product) {
-            $html .= '<li> Nome: '. $product->name .', Descrição: '. $product->description .'</li>';
+        if (view()->exists('products')) {
+            return view('products')->withProducts($products);
+        }
+    }
+
+    public function details($id) {
+        $product = DB::select('SELECT * FROM products WHERE id = ?', [$id]);
+
+        if (empty($product)) {
+            return 'Product not found.';
         }
 
-        $html .= '</ul>';
-
-        return $html;
+        return view('details')->with('product', $product[0]);
     }
 }
