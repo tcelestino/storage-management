@@ -10,8 +10,8 @@ class ProductsController extends Controller {
     public function list() {
         $products = DB::select('SELECT * FROM products');
 
-        if (view()->exists('products')) {
-            return view('products')->withProducts($products);
+        if (view()->exists('products/list')) {
+            return view('products/list')->withProducts($products);
         }
     }
 
@@ -22,6 +22,6 @@ class ProductsController extends Controller {
             return 'Product not found.';
         }
 
-        return view('details')->with('product', $product[0]);
+        return view('products/details')->with('product', $product[0]);
     }
 }
