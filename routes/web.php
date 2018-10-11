@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return '<h1>Foo and Bar</h1>';
-});
-
-Route::get('/products', 'ProductsController@list');
+Route::get('/', 'ProductsController@list');
 Route::get('products/details/{id}', 'ProductsController@details')->where('id', '[0-9]+');
+Route::get('products/new', 'ProductsController@new');
+Route::get('products/json', 'ProductsController@json');
+
+Route::post('products/added', 'ProductsController@add');

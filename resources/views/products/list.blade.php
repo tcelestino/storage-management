@@ -1,10 +1,14 @@
 @extends('layout/main')
 
 @section('content')
-    <h1>Products list</h1>
+    <h2>Products list</h2>
     @if(empty($products))
-        <p>Not found product</p>
+        <p>There aren't products</p>
+        <p><a href="{{ action('ProductsController@new') }}">Add new</a></p>
     @else
+        @if(old('name'))
+            <p class="alert alert-success">Product <strong>{{ old('name') }}</strong> added successfully</p>
+        @endif
         <table class='table table-bordered table-striped'>
             <thead>
                 <tr>

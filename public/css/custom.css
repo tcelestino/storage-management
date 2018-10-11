@@ -1,17 +1,25 @@
-.navbar.navbar-default{
+main.container {
+    margin-top: 3em;
+}
+
+.navbar.navbar-default {
     background-color: #337ab7;
     border-color: #2e6da4;
-    margin-top: 10px;
 }
 
-.navbar.navbar-default a {
-    color: white;
+.navbar-default .navbar-nav > li {
+    font-size: 1.3em;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: #76bff1;
 }
 
-li p.navbar-text,
-a.navbar-brand {
-    color: white!important;
-    font-weight: bolder;
+.navbar-brand {
+    color: #fff !important;
+    font-size: 3rem;
 }
 
 footer {
@@ -23,4 +31,8 @@ footer {
 
 footer p {
     padding: 10px;
+}
+
+.table td:nth-child(4) {
+    text-align: center
 }
